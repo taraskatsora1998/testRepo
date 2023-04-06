@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+
+    <test name="Smoke Test">
+        <classes>
+            <class name="comFinmatic.LoginTest"/>
+            <class name="comFinmatic.RegisterTest"/>
+            <class name="comFinmatic.ForgotPasswordTest"/>
+            <class name="comFinmatic.DashboardTest"/>
+            <class name="comFinmatic.SettingsTest"/>
+            <class name="comFinmatic.BackOfficeTest"/>
+        </classes>
+    </test>
+
+    <test name="BMP">
+        <parameter name="env" value="https://bmp.finmatic.net/login"/>
+        <classes>
+            <class name="comFinmatic.LoginTest"/>
+            <class name="comFinmatic.RegisterTest"/>
+            <class name="comFinmatic.ForgotPasswordTest"/>
+            <class name="comFinmatic.DashboardTest"/>
+            <class name="comFinmatic.SettingsTest"/>
+            <class name="comFinmatic.BackOfficeTest"/>
+        </classes>
+    </test>
+
+    <test name="DEV">
+        <parameter name="env" value="https://dev.finmatic.net/login"/>
+        <classes>
+            <class name="comFinmatic.LoginTest"/>
+            <class name="comFinmatic.RegisterTest"/>
+            <class name="comFinmatic.ForgotPasswordTest"/>
+            <class name="comFinmatic.DashboardTest"/>
+            <class name="comFinmatic.SettingsTest"/>
+            <class name="comFinmatic.BackOfficeTest"/>
+        </classes>
+    </test>
+
+</suite>
