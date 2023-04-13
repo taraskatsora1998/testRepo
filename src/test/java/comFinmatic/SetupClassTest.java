@@ -72,7 +72,6 @@ public class SetupClassTest {
     @AfterMethod(alwaysRun = true)
     public void quitDriver() {
         if (driver != null) {
-            driver.close();
             driver.quit();
         }
     }
