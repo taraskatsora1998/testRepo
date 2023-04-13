@@ -43,6 +43,14 @@
             <artifactId>selenium-http-jdk-client</artifactId>
             <version>4.5.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-firefox-driver -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-firefox-driver</artifactId>
+            <version>4.8.1</version>
+        </dependency>
+
+
 
     </dependencies>
 
