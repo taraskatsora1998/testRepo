@@ -52,8 +52,14 @@ public class ForgotPasswordPage extends AbstractComponents{
 
     By securityCode = By.xpath("//input[@class='security-cell']");
 
-    public ForgotPasswordPage enterPhoneNumber(){
+    public ForgotPasswordPage enterPhoneNumberPersonal(){
         fieldPhoneNumber.sendKeys(testContextPersonal.getPnone());
+
+        return this;
+    }
+
+    public ForgotPasswordPage enterPhoneNumberBusiness(){
+        fieldPhoneNumber.sendKeys(testContextBusiness.getPnoneBusiness());
 
         return this;
     }
@@ -73,7 +79,7 @@ public class ForgotPasswordPage extends AbstractComponents{
         return this;
     }
 
-    public ForgotPasswordPage enterEmail(){
+    public ForgotPasswordPage enterEmailPersonal(){
         fieldEmail.sendKeys(testContextPersonal.getEmail());
 
         return this;
@@ -124,5 +130,11 @@ public class ForgotPasswordPage extends AbstractComponents{
         }
 
         return isSuccessfull;
+    }
+
+    public ForgotPasswordPage enterEmailBusiness(){
+        fieldEmail.sendKeys(testContextBusiness.getEmailBusiness());
+
+        return this;
     }
 }

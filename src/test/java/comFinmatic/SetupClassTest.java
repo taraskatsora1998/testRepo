@@ -4,49 +4,76 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.safari.SafariDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Optional;
-import org.testng.annotations.Parameters;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Properties;
 
 public class SetupClassTest {
     protected WebDriver driver;
+    private String url;
+    private String browser;
 
-    @Parameters({"env"})
-    @BeforeMethod(alwaysRun = true)
-    public void setupLogin(@Optional("UAT") final String env){
+    @BeforeMethod
+    public void setUp() {
+        String environment = System.getProperty("environment");
+
+        if (environment.equalsIgnoreCase("dev_chrome")) {
+            url = "https://dev.finmatic.net/login";
+            browser = "chrome";
+        } else if (environment.equalsIgnoreCase("dev_firefox")) {
+            url = "https://dev.finmatic.net/login";
+            browser = "firefox";
+        } else if (environment.equalsIgnoreCase("dev_safari")) {
+            url = "https://dev.finmatic.net/login";
+            browser = "safari";
+        } else if (environment.equalsIgnoreCase("bmp_chrome")) {
+            url = "https://bmp.finmatic.net/login";
+            browser = "chrome";
+        } else if (environment.equalsIgnoreCase("bmp_firefox")) {
+            url = "https://bmp.finmatic.net/login";
+            browser = "firefox";
+        }  else if (environment.equalsIgnoreCase("bmp_safari")) {
+            url = "https://bmp.finmatic.net/login";
+            browser = "safari";
+        }  else if (environment.equalsIgnoreCase("acceptance_chrome")) {
+            url = "https://acceptance-new.finmatic.net/login";
+            browser = "chrome";
+        } else if (environment.equalsIgnoreCase("acceptance_firefox")) {
+            url = "https://acceptance-new.finmatic.net/login";
+            browser = "firefox";
+        } else if (environment.equalsIgnoreCase("acceptance_safari")) {
+            url = "https://acceptance-new.finmatic.net/login";
+            browser = "safari";
+        } else {
+            throw new IllegalArgumentException("Invalid environment: " + environment);
+        }
+
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
-        Properties properties = new Properties();
-        driver = new ChromeDriver(options);
-        driver.manage().window().maximize();
-        //String browserName =  System.getProperty("environment")!=null ? System.getProperty("environment") : properties.getProperty("environment");
-        switch (env) {
-            case "DEV":
-                driver.get("https://dev.finmatic.net/login");
-                break;
-            case "BMP":
-                driver.get("https://bmp.finmatic.net/login");
-                break;
-            default:
-                //Do nothing
+
+        if(browser.equalsIgnoreCase("chrome")) {
+            driver = new ChromeDriver(options);
+        } else if(browser.equalsIgnoreCase("firefox")){
+            driver = new FirefoxDriver();
+        } else if(browser.equalsIgnoreCase("safari")){
+            driver = new SafariDriver();
+        } else {
+            throw new IllegalArgumentException("Invalid browser: " + browser);
         }
-        // driver.get("https://dev.finmatic.net/login");
-        //driver.get("https://bmp.finmatic.net/login");
 
-
-
+        driver.manage().window().maximize();
+        driver.get(url);
     }
 
-   /* @AfterMethod(alwaysRun = true)
+    @AfterMethod(alwaysRun = true)
     public void quitDriver() {
         if (driver != null) {
+            driver.close();
             driver.quit();
         }
-    }*/
+    }
 }

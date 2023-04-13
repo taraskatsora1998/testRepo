@@ -28,21 +28,21 @@ public class DashboardTest extends SetupClassTest{
         registerPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .clickPeprsonalAccountBtn()
                 .enterFirstName("FirstName")
                 .enterLastName("LastName")
-                .enterEmail()
+                .enterEmailPersonal()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .rediretToLoginPage();
         loginPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickLogInBtn()
                 .enterSecurityCode();
@@ -77,7 +77,7 @@ public class DashboardTest extends SetupClassTest{
         loginPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberBusiness()
                 .enterPassword()
                 .clickLogInBtn()
                 .enterSecurityCode();
@@ -191,7 +191,7 @@ public class DashboardTest extends SetupClassTest{
                 .clickOkBtn();
         mailinatorPage
                 .navigateNewTab()
-                .enterEmail()
+                .enterEmailBusiness()
                 .clickGoBtn()
                 .clickAccountVerificationEmail();
 
@@ -215,14 +215,14 @@ public class DashboardTest extends SetupClassTest{
         registerPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .clickPeprsonalAccountBtn()
                 .enterFirstName("FirstName")
                 .enterLastName("LastName")
-                .enterEmail()
+                .enterEmailPersonal()
                 .clickRegisterBtn()
                 .enterSecurityCode();
         backOfficePage
@@ -247,7 +247,7 @@ public class DashboardTest extends SetupClassTest{
         loginPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickLogInBtn()
                 .enterSecurityCode();
@@ -273,14 +273,14 @@ public class DashboardTest extends SetupClassTest{
         registerPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .clickPeprsonalAccountBtn()
                 .enterFirstName("FirstName")
                 .enterLastName("LastName")
-                .enterEmail()
+                .enterEmailPersonal()
                 .clickRegisterBtn()
                 .enterSecurityCode();
         backOfficePage
@@ -304,7 +304,7 @@ public class DashboardTest extends SetupClassTest{
                 .redirectToTheLoginPage();
         mailinatorPage
                 .navigateNewTab()
-                .enterEmail()
+                .enterEmailPersonal()
                 .clickGoBtn()
                 .clickAccountVerificationEmail();
 
@@ -327,21 +327,21 @@ public class DashboardTest extends SetupClassTest{
         registerPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .clickPeprsonalAccountBtn()
                 .enterFirstName("FirstName")
                 .enterLastName("LastName")
-                .enterEmail()
+                .enterEmailPersonal()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .rediretToLoginPage();
         loginPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickLogInBtn()
                 .enterSecurityCode();
@@ -370,14 +370,14 @@ public class DashboardTest extends SetupClassTest{
         registerPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .clickPeprsonalAccountBtn()
                 .enterFirstName("FirstName")
                 .enterLastName("LastName")
-                .enterEmail()
+                .enterEmailPersonal()
                 .clickRegisterBtn()
                 .enterSecurityCode();
         backOfficePage
@@ -414,6 +414,9 @@ public class DashboardTest extends SetupClassTest{
                 .enterSecurityCode();
         backOfficePage
                 .redirectToBackOfficePage()
+                .enterLoginFiled()
+                .enterPassword()
+                .clickLoginBtn()
                 .clickAccountIdBtn()
                 .clickUserBtn()
                 .selectUserStatus("ADMINISTRATE")
@@ -455,7 +458,7 @@ public class DashboardTest extends SetupClassTest{
         loginPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickLogInBtn()
                 .enterSecurityCode();

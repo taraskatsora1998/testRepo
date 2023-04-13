@@ -62,18 +62,13 @@ public class RegisterPage extends AbstractComponents{
     By securityCode = By.xpath("//input[@class='security-cell']");
     By companyName = By.xpath("//input[@name='companyName']");
 
-    public RegisterPage enterPhoneNumber(){
+    public RegisterPage enterPhoneNumberPersonal(){
         fieldPhoneNumber.sendKeys(testContextPersonal.getPnone());
 
         return this;
     }
 
     public RegisterPage enterPhoneNumberBusiness(){
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         fieldPhoneNumber.sendKeys(testContextBusiness.getPnoneBusiness());
 
         return this;
@@ -120,7 +115,7 @@ public class RegisterPage extends AbstractComponents{
         return this;
     }
 
-    public RegisterPage enterEmail(){
+    public RegisterPage enterEmailPersonal(){
         fieldEmail.sendKeys(testContextPersonal.getEmail());
 
         return this;
@@ -139,7 +134,7 @@ public class RegisterPage extends AbstractComponents{
     }
 
     public RegisterPage rediretToLoginPage(){
-        driver.get("https://dev.finmatic.net/");
+        getRequiredEnvLinkWebSite();
 
         return this;
     }

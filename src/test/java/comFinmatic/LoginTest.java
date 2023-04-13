@@ -23,21 +23,21 @@ public class LoginTest extends SetupClassTest{
         registerPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .clickPeprsonalAccountBtn()
                 .enterFirstName("FirstName")
                 .enterLastName("LastName")
-                .enterEmail()
+                .enterEmailPersonal()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .rediretToLoginPage();
         loginPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickLogInBtn()
                 .enterSecurityCode();
@@ -60,19 +60,19 @@ public class LoginTest extends SetupClassTest{
         registerPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberBusiness()
                 .enterPassword()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .enterCompanyName("TestCompany")
-                .enterEmail()
+                .enterEmailBusiness()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .clickLogInbtn();
         loginPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberBusiness()
                 .enterPassword()
                 .clickLogInBtn()
                 .enterSecurityCode();

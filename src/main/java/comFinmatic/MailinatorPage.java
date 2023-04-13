@@ -42,14 +42,26 @@ public class MailinatorPage extends AbstractComponents{
     @FindBy(xpath = "(//*[contains(@style,'font-family: \"manrope\" , sans-serif ')])[2]")
     WebElement textAccountVerified;
 
+    @FindBy(xpath = "(//*[contains(text(),'Password Reset')])[1]")
+    WebElement btnEmailPasswordReset;
+
+    @FindBy(xpath = "(//*[contains(text(),'Reset password')])[1]")
+    WebElement btnEmailResetPassword;
+
     public String textFromEmailBusinessAccount = "Dear TestCompany,\n" +
             "you have successfully finished the verification process";
 
     public String textFromEmailPersonalsAccount = "Dear FirstName LastName,\n" +
             "you have successfully finished the verification process";
 
-    public MailinatorPage enterEmail(){
+    public MailinatorPage enterEmailPersonal(){
         fieldEmail.sendKeys(testContextPersonal.getEmail());
+
+        return this;
+    }
+
+    public MailinatorPage enterEmailBusiness(){
+        fieldEmail.sendKeys(testContextBusiness.getEmailBusiness());
 
         return this;
     }
@@ -94,6 +106,14 @@ public class MailinatorPage extends AbstractComponents{
         return this;
     }
 
+    public MailinatorPage navigateNewTabb(){
+        ArrayList<String> all = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(all.get(1));
+        driver.get("https://www.mailinator.com/");
+
+        return this;
+    }
+
     public MailinatorPage clickAccountVerificationEmail(){
         implicitWait();
         btnEmailVerification.click();
@@ -106,5 +126,17 @@ public class MailinatorPage extends AbstractComponents{
         driver.switchTo().frame(swithToIframe);
 
         return textAccountVerified.getText();
+    }
+
+    public boolean checkPasswordResetEmailIsDisplayed() {
+        boolean isEnabled = btnEmailPasswordReset.isDisplayed();
+        return isEnabled;
+    }
+
+    public MailinatorPage clickResetPasswordBtnFromEmail() {
+        driver.switchTo().frame(swithToIframe);
+        btnEmailResetPassword.click();
+
+        return this;
     }
 }

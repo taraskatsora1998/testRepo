@@ -14,6 +14,11 @@ public class TestContextBusiness {
     }
 
     private String getPhoneBusiness() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         long time = System.currentTimeMillis();
         final String timeStr = String.valueOf(time);
         final int timeLength = timeStr.length();

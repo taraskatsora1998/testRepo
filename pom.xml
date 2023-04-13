@@ -23,7 +23,7 @@
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.7.2</version>
+            <version>4.8.1</version>
         </dependency>
 
         <dependency>
@@ -55,11 +55,18 @@
                         <plugin>
                             <groupId>org.apache.maven.plugins</groupId>
                             <artifactId>maven-surefire-plugin</artifactId>
-                            <version>3.0.0-M9</version>
+                            <version>3.0.0-M7</version>
                             <configuration>
+                                <testFailureIgnore>false</testFailureIgnore>
                                 <suiteXmlFiles>
                                     <suiteXmlFile>src/test/java/resources/RunAllTests.xml</suiteXmlFile>
                                 </suiteXmlFiles>
+                                <skipTests>false</skipTests>
+                                <!--<skipFailedTests>true</skipFailedTests>-->
+                                <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
+                                <forkCount>0</forkCount>
+                                <debugForkedProcess>true</debugForkedProcess>
+                                <argLine>-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000</argLine>
                             </configuration>
                         </plugin>
                     </plugins>

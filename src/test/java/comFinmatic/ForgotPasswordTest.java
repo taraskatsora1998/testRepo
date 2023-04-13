@@ -25,14 +25,14 @@ public class ForgotPasswordTest extends SetupClassTest{
         registerPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .clickPeprsonalAccountBtn()
                 .enterFirstName("FirstName")
                 .enterLastName("LastName")
-                .enterEmail()
+                .enterEmailPersonal()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .clickSuccessLogInBtn();
@@ -42,14 +42,14 @@ public class ForgotPasswordTest extends SetupClassTest{
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
                 .clickSubmitBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .clickSubmitBtn()
                 .enterSecurityCode()
-                .enterEmail()
+                .enterEmailPersonal()
                 .clickSendAccountEmailBtn();
         mailinatorPage
                 .navigateNewTab()
-                .enterEmail()
+                .enterEmailPersonal()
                 .clickGoBtn()
                 .clickEmailBtn()
                 .navigatePreviousTab();
@@ -64,7 +64,7 @@ public class ForgotPasswordTest extends SetupClassTest{
     }
 
     @Test
-    public void testForgotPasswordBusinessAccount() {
+    public void testForgotPasswordWithEMailPhoneBusinessAccount() {
         TestContextPersonal testContextPersonal = new TestContextPersonal();
         TestContextBusiness testContextBusiness = new TestContextBusiness();
         loginPage = new LoginPage(driver, testContextPersonal, testContextBusiness);
@@ -77,7 +77,105 @@ public class ForgotPasswordTest extends SetupClassTest{
         registerPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberBusiness()
+                .enterPassword()
+                .clickRegisterBtn()
+                .enterSecurityCode()
+                .enterCompanyName("TestComp")
+                .enterEmailBusiness()
+                .clickRegisterBtn()
+                .enterSecurityCode()
+                .clickLogInbtn();
+        loginPage
+                .clickForgotPasswordBtn();
+        forgotPasswordPage
+                .clickCountryCodeBtn()
+                .clickCountryBtn()
+                .enterPhoneNumberBusiness()
+                .clickSubmitBtn()
+                .enterSecurityCode()
+                .enterEmailBusiness()
+                .clickSendAccountEmailBtn();
+        mailinatorPage
+                .navigateNewTab()
+                .enterEmailBusiness()
+                .clickGoBtn()
+                .clickEmailBtn()
+                .navigatePreviousTab();
+        forgotPasswordPage
+                .enterNewPassword("Aa123b123-3")
+                .repeatPasswordField("Aa123b123-3")
+                .clickConfirmBtn();
+
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(forgotPasswordPage.verifySuccessfullSignUp());
+        softAssert.assertAll();
+    }
+
+    @Test
+    public void testForgotPasswordWithEmailPhonePersonalAccount() {
+        TestContextPersonal testContextPersonal = new TestContextPersonal();
+        TestContextBusiness testContextBusiness = new TestContextBusiness();
+        loginPage = new LoginPage(driver, testContextPersonal, testContextBusiness);
+        registerPage = new RegisterPage(driver, testContextPersonal, testContextBusiness);
+        forgotPasswordPage = new ForgotPasswordPage(driver, testContextPersonal, testContextBusiness);
+        mailinatorPage = new MailinatorPage(driver, testContextPersonal, testContextBusiness);
+
+        loginPage
+                .clickRegisterBtn();
+        registerPage
+                .clickCountryCodeBtn()
+                .clickCountryBtn()
+                .enterPhoneNumberPersonal()
+                .enterPassword()
+                .clickRegisterBtn()
+                .enterSecurityCode()
+                .clickPeprsonalAccountBtn()
+                .enterFirstName("Test")
+                .enterLastName("Test")
+                .enterEmailPersonal()
+                .clickRegisterBtn()
+                .enterSecurityCode()
+                .clickSuccessLogInBtn();
+        loginPage
+                .clickForgotPasswordBtn();
+        forgotPasswordPage
+                .clickCountryCodeBtn()
+                .clickCountryBtn()
+                .clickSubmitBtn()
+                .enterPhoneNumberPersonal()
+                .clickSubmitBtn()
+                .enterSecurityCode()
+                .enterEmailPersonal()
+                .clickSendAccountEmailBtn();
+        mailinatorPage
+                .navigateNewTab()
+                .enterEmailPersonal()
+                .clickGoBtn()
+                .clickEmailBtn()
+                .navigatePreviousTab();
+        forgotPasswordPage
+                .enterNewPassword("Aa123b123-3")
+                .repeatPasswordField("Aa123b123-3")
+                .clickConfirmBtn()
+                .verifySuccessfullSignUp();
+    }
+
+    @Test
+    public void testForgotPasswordWithOutEmail() {
+        TestContextPersonal testContextPersonal = new TestContextPersonal();
+        TestContextBusiness testContextBusiness = new TestContextBusiness();
+        loginPage = new LoginPage(driver, testContextPersonal, testContextBusiness);
+        registerPage = new RegisterPage(driver, testContextPersonal, testContextBusiness);
+        forgotPasswordPage = new ForgotPasswordPage(driver, testContextPersonal, testContextBusiness);
+        mailinatorPage = new MailinatorPage(driver, testContextPersonal, testContextBusiness);
+
+        loginPage
+                .clickRegisterBtn();
+        registerPage
+                .clickCountryCodeBtn()
+                .clickCountryBtn()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickRegisterBtn()
                 .enterSecurityCode()
@@ -87,59 +185,10 @@ public class ForgotPasswordTest extends SetupClassTest{
         forgotPasswordPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .clickSubmitBtn()
+                .enterPhoneNumberPersonal()
                 .clickSubmitBtn()
                 .enterSecurityCode()
-                .enterNewPassword("Aa123b123-3")
-                .repeatPasswordField("Aa123b123-3")
-                .clickConfirmBtn();
-
-        SoftAssert softAssert = new SoftAssert();
-        softAssert.assertTrue(forgotPasswordPage.verifySuccessfullSignUp());
-        softAssert.assertAll();
-    }
-
-    @Test
-    public void testForgotPasswordWithoutAccount() {
-        TestContextPersonal testContextPersonal = new TestContextPersonal();
-        TestContextBusiness testContextBusiness = new TestContextBusiness();
-        loginPage = new LoginPage(driver, testContextPersonal, testContextBusiness);
-        registerPage = new RegisterPage(driver, testContextPersonal, testContextBusiness);
-        forgotPasswordPage = new ForgotPasswordPage(driver, testContextPersonal, testContextBusiness);
-        mailinatorPage = new MailinatorPage(driver, testContextPersonal, testContextBusiness);
-
-        loginPage
-                .clickRegisterBtn();
-        registerPage
-                .clickCountryCodeBtn()
-                .clickCountryBtn()
-                .enterPhoneNumber()
-                .enterPassword()
-                .clickRegisterBtn()
-                .enterSecurityCode()
-                .enterCompanyName("TestCompany")
-                .enterEmail()
-                .clickRegisterBtn()
-                .enterSecurityCode()
-                .clickSuccessLogInBtn();
-        loginPage
-                .clickForgotPasswordBtn();
-        forgotPasswordPage
-                .clickCountryCodeBtn()
-                .clickCountryBtn()
-                .clickSubmitBtn()
-                .enterPhoneNumber()
-                .clickSubmitBtn()
-                .enterSecurityCode()
-                .enterEmail()
-                .clickSendAccountEmailBtn();
-        mailinatorPage
-                .navigateNewTab()
-                .enterEmail()
-                .clickGoBtn()
-                .clickEmailBtn()
-                .navigatePreviousTab();
-        forgotPasswordPage
                 .enterNewPassword("Aa123b123-3")
                 .repeatPasswordField("Aa123b123-3")
                 .clickConfirmBtn()

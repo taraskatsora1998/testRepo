@@ -22,14 +22,14 @@ public class RegisterTest extends SetupClassTest{
         registerPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .clickPeprsonalAccountBtn()
                 .enterFirstName("FirstName")
                 .enterLastName("LastName")
-                .enterEmail()
+                .enterEmailPersonal()
                 .clickRegisterBtn()
                 .enterSecurityCode();
 
@@ -50,12 +50,12 @@ public class RegisterTest extends SetupClassTest{
         registerPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberBusiness()
                 .enterPassword()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .enterCompanyName("TestCompany")
-                .enterEmail()
+                .enterEmailBusiness()
                 .clickRegisterBtn()
                 .enterSecurityCode();
 
@@ -77,14 +77,14 @@ public class RegisterTest extends SetupClassTest{
         registerPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberBusiness()
                 .enterPassword()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .rediretToLoginPage()
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberBusiness()
                 .enterPassword();
         loginPage
                 .clickLogInBtn()
@@ -114,7 +114,7 @@ public class RegisterTest extends SetupClassTest{
         registerPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickRegisterBtn()
                 .enterSecurityCode()
@@ -122,7 +122,7 @@ public class RegisterTest extends SetupClassTest{
         loginPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickLogInBtn()
                 .enterSecurityCode();

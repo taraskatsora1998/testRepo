@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Command line suite]" verbose="0">
+  <test thread-count="5" name="Command line test(failed)" verbose="0">
+    <classes>
+      <class name="comFinmatic.ForgotPasswordTest">
+        <methods>
+          <include name="quitDriver"/>
+          <include name="testForgotPasswordBusinessAccount"/>
+          <include name="testForgotPasswordPersonalAccount"/>
+          <include name="setUp"/>
+          <include name="testForgotPasswordWithoutAccount"/>
+        </methods>
+      </class> <!-- comFinmatic.ForgotPasswordTest -->
+      <class name="comFinmatic.LoginTest">
+        <methods>
+          <include name="testCheckUserCanLoginBussinessAccount"/>
+          <include name="quitDriver"/>
+          <include name="testCheckUserCanLoginPersonalAccount"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- comFinmatic.LoginTest -->
+      <class name="comFinmatic.DashboardTest">
+        <methods>
+          <include name="testCheckBusinessAccountCanSeeVerificationBtn"/>
+          <include name="quitDriver"/>
+          <include name="testCheckPersonalAccountCanCompleteVerification"/>
+          <include name="testCheckPersonalAccountCanSeeVerificationBtn"/>
+          <include name="testCheckPersonalAccountCantAddPersonalAccount"/>
+          <include name="testCheckPersonalAccountReceivesEmailSuccessfulActivation"/>
+          <include name="setUp"/>
+          <include name="testCheckBusinessAccountCanAddPersonalAsRepresentative"/>
+          <include name="testCheckBusinessAccountCanCompleteVerification"/>
+          <include name="testCheckBusinessAccountReceivesEmailSuccessfulActivation"/>
+        </methods>
+      </class> <!-- comFinmatic.DashboardTest -->
+      <class name="comFinmatic.SettingsTest">
+        <methods>
+          <include name="quitDriver"/>
+          <include name="testResetPasswordBusinessAccountInSettings"/>
+          <include name="testResetPasswordPersonalAccountInSettings"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- comFinmatic.SettingsTest -->
+      <class name="comFinmatic.BackOfficeTest">
+        <methods>
+          <include name="quitDriver"/>
+          <include name="testCheckKycStatusHiddenForNewUserPersonal"/>
+          <include name="testCheckKycStatusNewForNewUserPersonal"/>
+          <include name="testCheckKycStatusDeclinedForNewUserPersonal"/>
+          <include name="testCheckOperatorCanChangeUserStatusToBlockedPersonalAccount"/>
+          <include name="testCheckOperatorCanChangeUserStatusToAdministrateBusinessAccount"/>
+          <include name="testCheckKycStatusUnderReviewForNewUserPersonal"/>
+          <include name="setUp"/>
+          <include name="testCheckOperatorCanChangeUserStatusToActiveBusinessAccount"/>
+          <include name="testCheckKycStatusUnderReviewForNewUserBusiness"/>
+          <include name="testCheckKycStatusVerifiedForNewUserPersonal"/>
+          <include name="testCheckOperatorCanChangeUserStatusToActivePersonalAccount"/>
+          <include name="testCheckKycStatusDeclinedForNewUserBusiness"/>
+          <include name="testCheckOperatorCanChangeUserStatusToBlockedBusinessAccount"/>
+          <include name="testCheckKycStatusActiveForNewUserPersonal"/>
+          <include name="testCheckKycStatusNewForNewUserBusiness"/>
+          <include name="testCheckOperatorCanChangeUserStatusToAdministratePersonalAccount"/>
+        </methods>
+      </class> <!-- comFinmatic.BackOfficeTest -->
+      <class name="comFinmatic.RegisterTest">
+        <methods>
+          <include name="quitDriver"/>
+          <include name="testRegistrationBussinessAccount"/>
+          <include name="testRegistrationWithoutAccountBussinessAccount"/>
+          <include name="testRegistrationWithoutAccountPersonalAccount"/>
+          <include name="setUp"/>
+          <include name="testRegistrationPersonalAccount"/>
+        </methods>
+      </class> <!-- comFinmatic.RegisterTest -->
+    </classes>
+  </test> <!-- Command line test(failed) -->
+</suite> <!-- Failed suite [Command line suite] -->

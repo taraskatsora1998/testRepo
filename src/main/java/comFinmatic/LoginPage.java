@@ -56,7 +56,7 @@ public class LoginPage extends AbstractComponents {
         return this;
     }
 
-    public LoginPage enterPhoneNumber() {
+    public LoginPage enterPhoneNumberPersonal() {
         fieldPhoneNumber.sendKeys(testContextPersonal.getPnone());
 
         return this;

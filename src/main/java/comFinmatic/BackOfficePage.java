@@ -98,7 +98,7 @@ public class BackOfficePage extends AbstractComponents{
     @FindBy(xpath = "//select[@id='provider-modal-provider']")
     WebElement selectProvider;
 
-    @FindBy(xpath = "(//button[contains(text(),'Add')])[4]")
+    @FindBy(xpath = "(//*[contains(text(),'Add')])[11]")
     WebElement btnAdd;
 
     @FindBy(xpath = "//button[contains(text(),'OK')]")
@@ -116,10 +116,17 @@ public class BackOfficePage extends AbstractComponents{
     @FindBy(xpath = "//select[@id='accountStatus']")
     WebElement selectAccountStatus;
 
-    @FindBy(xpath = "(//button[contains(text(),'Save')])[4]")
-    WebElement btnSaveAccountStatus;
+    @FindBy(xpath = "//button[contains(text(),'Reset password')]")
+    WebElement btnResetPswrd;
+
+    @FindBy(xpath = "//button[contains(text(),'Yes')]")
+    WebElement btnYes;
+
+    @FindBy(xpath = "//button[contains(text(),'OK')]")
+    WebElement btnOkResetPswrd;
 
     By userBtn = By.xpath("//span[contains(text(),'User')]");
+    By fieldKycStatusBy = By.xpath("//select[@id='kycStatus']");
 
     public BackOfficePage enterLoginFiled(){
         fieldLogin.sendKeys("operator@finmatic.net");
@@ -140,10 +147,7 @@ public class BackOfficePage extends AbstractComponents{
     }
 
     public BackOfficePage redirectToBackOfficePage(){
-        ((JavascriptExecutor)driver).executeScript("window.open()");
-        ArrayList<String> all = new ArrayList<String>(driver.getWindowHandles());
-        driver.switchTo().window(all.get(1));
-        driver.get("https://dev-admin.finmatic.net/");
+        getRequiredEnvLinkBO();
 
         return this;
     }
@@ -163,6 +167,7 @@ public class BackOfficePage extends AbstractComponents{
     }
 
     public BackOfficePage selectUserStatus(String userStatus){
+        selectUserStatus.click();
         selectValueFromDropdown(selectUserStatus,userStatus);
 
         return this;
@@ -201,14 +206,16 @@ public class BackOfficePage extends AbstractComponents{
     public BackOfficePage clickOkBtn(){
         btnOk.click();
 
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return this;
     }
 
     public BackOfficePage redirectToTheLoginPage(){
-        ((JavascriptExecutor)driver).executeScript("window.open()");
-        ArrayList<String> all = new ArrayList<String>(driver.getWindowHandles());
-        driver.switchTo().window(all.get(2));
-        driver.get("https://dev.finmatic.net/");
+        getRequiredEnvLinkWebSite();
 
         return this;
     }
@@ -241,6 +248,7 @@ public class BackOfficePage extends AbstractComponents{
     }
 
     public String verifyUserKycStatus(){
+        //waitForElementToContains(fieldKycStatusBy);
         return getValueSelected(fieldKycStatus);
 
     }
@@ -335,13 +343,21 @@ public class BackOfficePage extends AbstractComponents{
         return this;
     }
 
-    public BackOfficePage clickSaveAccountStatus() {
-        btnSaveAccountStatus.click();
+    public BackOfficePage clickResetPswrdBtn() {
+        btnResetPswrd.click();
 
         return this;
     }
 
-    public String getAccountStatus() {
-        return getValueSelected(selectAccountStatus);
+    public BackOfficePage clickYesBtn() {
+        btnYes.click();
+
+        return this;
+    }
+
+    public BackOfficePage clickOkResetPswrd(){
+        btnOkResetPswrd.click();
+
+        return this;
     }
 }

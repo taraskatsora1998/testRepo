@@ -13,6 +13,7 @@ public class BackOfficeTest extends SetupClassTest{
     public static BackOfficePage backOfficePage;
     public static MailinatorPage mailinatorPage;
     public static HeaderPage headerPage;
+    public static PasswordRecoveryPage passwordRecoveryPage;
 
     @Test
     public void testCheckOperatorCanChangeUserStatusToActivePersonalAccount(){
@@ -30,14 +31,14 @@ public class BackOfficeTest extends SetupClassTest{
         registerPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .clickPeprsonalAccountBtn()
                 .enterFirstName("FirstName")
                 .enterLastName("LastName")
-                .enterEmail()
+                .enterEmailPersonal()
                 .clickRegisterBtn()
                 .enterSecurityCode();
         backOfficePage
@@ -77,14 +78,14 @@ public class BackOfficeTest extends SetupClassTest{
         registerPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .clickPeprsonalAccountBtn()
                 .enterFirstName("FirstName")
                 .enterLastName("LastName")
-                .enterEmail()
+                .enterEmailPersonal()
                 .clickRegisterBtn()
                 .enterSecurityCode();
         backOfficePage
@@ -101,7 +102,7 @@ public class BackOfficeTest extends SetupClassTest{
         loginPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickLogInBtn();
 
@@ -127,14 +128,14 @@ public class BackOfficeTest extends SetupClassTest{
         registerPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .clickPeprsonalAccountBtn()
                 .enterFirstName("FirstName")
                 .enterLastName("LastName")
-                .enterEmail()
+                .enterEmailPersonal()
                 .clickRegisterBtn()
                 .enterSecurityCode();
         backOfficePage
@@ -151,7 +152,7 @@ public class BackOfficeTest extends SetupClassTest{
         loginPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickLogInBtn();
 
@@ -177,12 +178,12 @@ public class BackOfficeTest extends SetupClassTest{
         registerPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberBusiness()
                 .enterPassword()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .enterCompanyName("TestCompany")
-                .enterEmail()
+                .enterEmailBusiness()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .clickLogInbtn();
@@ -228,7 +229,7 @@ public class BackOfficeTest extends SetupClassTest{
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .enterCompanyName("TestCompany")
-                .enterEmail()
+                .enterEmailBusiness()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .clickLogInbtn();
@@ -277,7 +278,7 @@ public class BackOfficeTest extends SetupClassTest{
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .enterCompanyName("TestCompany")
-                .enterEmail()
+                .enterEmailBusiness()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .clickLogInbtn();
@@ -321,14 +322,14 @@ public class BackOfficeTest extends SetupClassTest{
         registerPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .clickPeprsonalAccountBtn()
                 .enterFirstName("FirstName")
                 .enterLastName("LastName")
-                .enterEmail()
+                .enterEmailPersonal()
                 .clickRegisterBtn()
                 .enterSecurityCode();
         backOfficePage
@@ -366,7 +367,7 @@ public class BackOfficeTest extends SetupClassTest{
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .enterCompanyName("TestCompany")
-                .enterEmail()
+                .enterEmailBusiness()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .clickLogInbtn();
@@ -400,14 +401,14 @@ public class BackOfficeTest extends SetupClassTest{
         registerPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .clickPeprsonalAccountBtn()
                 .enterFirstName("FirstName")
                 .enterLastName("LastName")
-                .enterEmail()
+                .enterEmailPersonal()
                 .clickRegisterBtn()
                 .enterSecurityCode();
         backOfficePage
@@ -496,14 +497,14 @@ public class BackOfficeTest extends SetupClassTest{
         registerPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .clickPeprsonalAccountBtn()
                 .enterFirstName("FirstName")
                 .enterLastName("LastName")
-                .enterEmail()
+                .enterEmailPersonal()
                 .clickRegisterBtn()
                 .enterSecurityCode();
         backOfficePage
@@ -531,10 +532,7 @@ public class BackOfficeTest extends SetupClassTest{
                 .selectCurrency("EUR")
                 .clickCreateBtn()
                 .clickOkWallet()
-                .clickCheckboxBtn();
-        backOfficePage
-                .getCreatedIban();
-        backOfficePage
+                .clickCheckboxBtn()
                 .clickUserBtn()
                 .selectUserStatus("ACTIVE")
                 .clickSaveBtn()
@@ -543,7 +541,7 @@ public class BackOfficeTest extends SetupClassTest{
         loginPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickLogInBtn()
                 .enterSecurityCode();
@@ -570,14 +568,14 @@ public class BackOfficeTest extends SetupClassTest{
         registerPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .clickPeprsonalAccountBtn()
                 .enterFirstName("FirstName")
                 .enterLastName("LastName")
-                .enterEmail()
+                .enterEmailPersonal()
                 .clickRegisterBtn()
                 .enterSecurityCode();
         backOfficePage
@@ -598,7 +596,7 @@ public class BackOfficeTest extends SetupClassTest{
         loginPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickLogInBtn();
 
@@ -665,7 +663,7 @@ public class BackOfficeTest extends SetupClassTest{
     }
 
     @Test
-    public void testCheckKycStatusActiveForNewUserPersonal(){
+    public void testUserReceiveResetPswrdEmailPersonal(){
         TestContextPersonal testContextPersonal = new TestContextPersonal();
         TestContextBusiness testContextBusiness = new TestContextBusiness();
         loginPage = new LoginPage(driver, testContextPersonal, testContextBusiness);
@@ -680,14 +678,14 @@ public class BackOfficeTest extends SetupClassTest{
         registerPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberPersonal()
                 .enterPassword()
                 .clickRegisterBtn()
                 .enterSecurityCode()
                 .clickPeprsonalAccountBtn()
                 .enterFirstName("FirstName")
                 .enterLastName("LastName")
-                .enterEmail()
+                .enterEmailPersonal()
                 .clickRegisterBtn()
                 .enterSecurityCode();
         backOfficePage
@@ -697,21 +695,22 @@ public class BackOfficeTest extends SetupClassTest{
                 .clickLoginBtn()
                 .clickAccountIdBtn()
                 .clickUserBtn()
-                .selectUserStatus("ADMINISTRATE")
-                .clickSaveBtn()
-                .clickOkBtn()
-                .clickUserAccountBtn()
-                .selectAccountStatus("NEW")
-                .clickSaveAccountStatus();
+                .clickResetPswrdBtn()
+                .clickYesBtn()
+                .clickOkResetPswrd();
+        mailinatorPage
+                .navigateNewTab()
+                .enterEmailPersonal()
+                .clickGoBtn();
 
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(backOfficePage.getAccountStatus(),"Active");
+        softAssert.assertTrue(mailinatorPage.checkPasswordResetEmailIsDisplayed());
         softAssert.assertAll();
 
     }
 
     @Test
-    public void testCheckKycStatusHiddenForNewUserPersonal(){
+    public void testUserReceiveResetPswrdEmailBusiness(){
         TestContextPersonal testContextPersonal = new TestContextPersonal();
         TestContextBusiness testContextBusiness = new TestContextBusiness();
         loginPage = new LoginPage(driver, testContextPersonal, testContextBusiness);
@@ -726,14 +725,12 @@ public class BackOfficeTest extends SetupClassTest{
         registerPage
                 .clickCountryCodeBtn()
                 .clickCountryBtn()
-                .enterPhoneNumber()
+                .enterPhoneNumberBusiness()
                 .enterPassword()
                 .clickRegisterBtn()
                 .enterSecurityCode()
-                .clickPeprsonalAccountBtn()
-                .enterFirstName("FirstName")
-                .enterLastName("LastName")
-                .enterEmail()
+                .enterCompanyName("TestCompany")
+                .enterEmailBusiness()
                 .clickRegisterBtn()
                 .enterSecurityCode();
         backOfficePage
@@ -743,15 +740,71 @@ public class BackOfficeTest extends SetupClassTest{
                 .clickLoginBtn()
                 .clickAccountIdBtn()
                 .clickUserBtn()
-                .selectUserStatus("ADMINISTRATE")
-                .clickSaveBtn()
-                .clickOkBtn()
-                .clickUserAccountBtn()
-                .selectAccountStatus("HIDDEN")
-                .clickSaveAccountStatus();
+                .clickResetPswrdBtn()
+                .clickYesBtn()
+                .clickOkResetPswrd();
+        mailinatorPage
+                .navigateNewTab()
+                .enterEmailBusiness()
+                .clickGoBtn();
 
         SoftAssert softAssert = new SoftAssert();
-        softAssert.assertEquals(backOfficePage.getAccountStatus(),"Hidden");
+        softAssert.assertTrue(mailinatorPage.checkPasswordResetEmailIsDisplayed());
+        softAssert.assertAll();
+
+    }
+
+    @Test
+    public void testCheckUserCanResetPswrdUsingProvidedLinkBusiness(){
+        TestContextPersonal testContextPersonal = new TestContextPersonal();
+        TestContextBusiness testContextBusiness = new TestContextBusiness();
+        loginPage = new LoginPage(driver, testContextPersonal, testContextBusiness);
+        dashboardPage = new DashboardPage(driver, testContextPersonal, testContextBusiness);
+        registerPage = new RegisterPage(driver, testContextPersonal, testContextBusiness);
+        backOfficePage = new BackOfficePage(driver, testContextPersonal, testContextBusiness);
+        mailinatorPage = new MailinatorPage(driver, testContextPersonal, testContextBusiness);
+        headerPage = new HeaderPage(driver, testContextPersonal, testContextBusiness);
+        passwordRecoveryPage = new PasswordRecoveryPage(driver, testContextPersonal, testContextBusiness);
+
+
+        loginPage
+                .clickRegisterBtn();
+        registerPage
+                .clickCountryCodeBtn()
+                .clickCountryBtn()
+                .enterPhoneNumberBusiness()
+                .enterPassword()
+                .clickRegisterBtn()
+                .enterSecurityCode()
+                .enterCompanyName("TestCompany")
+                .enterEmailBusiness()
+                .clickRegisterBtn()
+                .enterSecurityCode();
+        backOfficePage
+                .redirectToBackOfficePage()
+                .enterLoginFiled()
+                .enterPassword()
+                .clickLoginBtn()
+                .clickAccountIdBtn()
+                .clickUserBtn()
+                .clickResetPswrdBtn()
+                .clickYesBtn()
+                .clickOkResetPswrd();
+        mailinatorPage
+                .navigateNewTabb()
+                .enterEmailBusiness()
+                .clickGoBtn()
+                .clickEmailBtn()
+                .clickResetPasswordBtnFromEmail();
+        passwordRecoveryPage
+                .enterSecurityCode()
+                .enterNewPassword("Aa123b123-2")
+                .repeatPasswordField("Aa123b123-2")
+                .clickConfirmBtn();
+
+
+        SoftAssert softAssert = new SoftAssert();
+        softAssert.assertTrue(passwordRecoveryPage.verifySuccessfullSignUp());
         softAssert.assertAll();
 
     }
