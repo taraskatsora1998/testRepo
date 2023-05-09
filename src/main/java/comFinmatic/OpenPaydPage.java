@@ -94,7 +94,7 @@ public class OpenPaydPage extends AbstractComponents {
     }
 
     public OpenPaydPage clickLinkedClientsBtn() {
-        try {
+      /*  try {
             Boolean checkBtnClose = btnClose.isDisplayed();
             if (checkBtnClose == true) {
                 ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnClose);
@@ -106,9 +106,9 @@ public class OpenPaydPage extends AbstractComponents {
             }
         } catch (Exception e) {
             e.printStackTrace();
-        }
+        }*/
 
-        //((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnLinkedClients);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", btnLinkedClients);
 
         return this;
     }
