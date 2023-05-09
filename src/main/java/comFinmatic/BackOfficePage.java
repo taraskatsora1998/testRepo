@@ -8,8 +8,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.ArrayList;
 
 public class BackOfficePage extends AbstractComponents{
@@ -28,8 +31,7 @@ public class BackOfficePage extends AbstractComponents{
     @FindBy(xpath = "//button")
     WebElement btnLogIn;
 
-    // @FindBy(xpath = "(//td[@scope='row'])[1]")
-    @FindBy(xpath = "(//a)[20]")
+    @FindBy(xpath = "(//td[@class='valign-middle']//a)[1]")
     WebElement btnAccountIdBtn;
 
     @FindBy(xpath = "//span[contains(text(),'User')]")
@@ -98,7 +100,7 @@ public class BackOfficePage extends AbstractComponents{
     @FindBy(xpath = "//select[@id='provider-modal-provider']")
     WebElement selectProvider;
 
-    @FindBy(xpath = "(//*[contains(text(),'Add')])[11]")
+    @FindBy(xpath = "//div[@class='modal-footer']/button[@class='btn btn-primary']")
     WebElement btnAdd;
 
     @FindBy(xpath = "//button[contains(text(),'OK')]")
@@ -109,6 +111,9 @@ public class BackOfficePage extends AbstractComponents{
 
     @FindBy(xpath = "(//*[@class='custom-checkbox custom-control'])[1]")
     WebElement btnCheckbox;
+
+    @FindBy(xpath = "(//*[@class='custom-checkbox custom-control'])[2]")
+    WebElement btnCheckboxEur;
 
     @FindBy(xpath = "(//*[@class=\"text-center\"])[2]/../td[2]")
     WebElement fieldIban;
@@ -125,8 +130,42 @@ public class BackOfficePage extends AbstractComponents{
     @FindBy(xpath = "//button[contains(text(),'OK')]")
     WebElement btnOkResetPswrd;
 
+    @FindBy(xpath = "//select[@id='addressCountry']")
+    WebElement selectCountry;
+
+    @FindBy(xpath = "//input[@name='address']")
+    WebElement fieldAddress;
+
+    @FindBy(xpath = "//input[@name='zip']")
+    WebElement fieldZip;
+
+    @FindBy(xpath = "//input[@name='addressCity']")
+    WebElement fieldAddressCity;
+
+    @FindBy(xpath = "//input[@name='address']")
+    WebElement fieldLegalAddress;
+
+    @FindBy(xpath = "//input[@name='zipCode']")
+    WebElement fieldLegalZipCode;
+
+    @FindBy(xpath = "//input[@name='city']")
+    WebElement fieldLegalAddressCity;
+
+    @FindBy(xpath = "(//select[@id='addressCountry'])[2]")
+    WebElement selectOfficeAddress;
+
+    @FindBy(xpath = "//input[@name='companyName']")
+    WebElement enterCompanyName;
+
+    @FindBy(xpath = "//button[contains(text(),'Add Currency')]")
+    WebElement btnAddCurrency;
+
     By userBtn = By.xpath("//span[contains(text(),'User')]");
-    By fieldKycStatusBy = By.xpath("//select[@id='kycStatus']");
+    By btnWalletsWait = By.xpath("//span[contains(text(),'Wallets')]");
+    By btnCheckBoxWait = By.xpath("(//*[@class='custom-checkbox custom-control'])[1]");
+    By btnCheckBoxEurWait = By.xpath("(//*[@class='custom-checkbox custom-control'])[2]");
+    By waitBtnSaveChangesUser = By.xpath("(//button[contains(text(),'Save changes')])[2]");
+    By waitFieldZip = By.xpath("//input[@name='zip']");
 
     public BackOfficePage enterLoginFiled(){
         fieldLogin.sendKeys("operator@finmatic.net");
@@ -160,14 +199,32 @@ public class BackOfficePage extends AbstractComponents{
     }
 
     public BackOfficePage clickUserBtn(){
-        waitForElementToBeVisible(userBtn);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         btnUser.click();
-
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return this;
     }
 
     public BackOfficePage selectUserStatus(String userStatus){
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         selectUserStatus.click();
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         selectValueFromDropdown(selectUserStatus,userStatus);
 
         return this;
@@ -180,6 +237,7 @@ public class BackOfficePage extends AbstractComponents{
     }
 
     public BackOfficePage selectKYCStatus(){
+        selectKYCStatus.click();
         selectValueFromDropdown(selectKYCStatus,"VERIFIED");
 
         return this;
@@ -198,6 +256,7 @@ public class BackOfficePage extends AbstractComponents{
     }
 
     public BackOfficePage clickSaveChangesUserBtn(){
+        waitForElementToBeClickable(waitBtnSaveChangesUser);
         btnSaveChangesUser.click();
 
         return this;
@@ -244,11 +303,15 @@ public class BackOfficePage extends AbstractComponents{
     }
 
     public String verifyUserStatusBusinessAccount(){
+        try {
+            Thread.sleep(20000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return getValueSelected(fieldUserStatusBusiness);
     }
 
     public String verifyUserKycStatus(){
-        //waitForElementToContains(fieldKycStatusBy);
         return getValueSelected(fieldKycStatus);
 
     }
@@ -260,6 +323,7 @@ public class BackOfficePage extends AbstractComponents{
     }
 
     public BackOfficePage clickWalletsBtn(){
+        waitForElementToBeClickable(btnWalletsWait);
         btnWallets.click();
 
         return this;
@@ -284,6 +348,11 @@ public class BackOfficePage extends AbstractComponents{
     }
 
     public BackOfficePage clickCreateBtn() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         btnCreate.click();
 
         return this;
@@ -314,27 +383,50 @@ public class BackOfficePage extends AbstractComponents{
     }
 
     public BackOfficePage clickOkProvider(){
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         btnOkProvider.click();
 
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return this;
     }
 
     public BackOfficePage clickOkWallet(){
+        waitForElementToBeVisible(btnWalletsWait);
         btnOkWallet.click();
 
         return this;
     }
 
     public BackOfficePage clickCheckboxBtn(){
+        waitForElementToBeVisible(btnCheckBoxWait);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         btnCheckbox.click();
 
         return this;
     }
 
-    public String getCreatedIban() {
-        String s = fieldIban.getText();
+    public BackOfficePage clickCheckboxBtnEur(){
+        waitForElementToBeVisible(btnCheckBoxEurWait);
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        btnCheckboxEur.click();
 
-        return s;
+        return this;
     }
 
     public BackOfficePage selectAccountStatus(String accountStatus) {
@@ -360,4 +452,68 @@ public class BackOfficePage extends AbstractComponents{
 
         return this;
     }
+
+    public BackOfficePage selectAddressCountry(String addressCountry){
+        selectCountry.click();
+        selectValueFromDropdown(selectCountry,addressCountry);
+
+        return this;
+    }
+
+    public BackOfficePage enterAddressField() {
+        fieldAddress.sendKeys("Address");
+
+        return this;
+    }
+
+    public BackOfficePage enterZip() {
+        waitForElementToBeClickable(waitFieldZip);
+        fieldZip.sendKeys("12345");
+
+        return this;
+    }
+
+    public BackOfficePage enterAddressCity() {
+        fieldAddressCity.sendKeys("Address City");
+
+        return this;
+    }
+
+    public BackOfficePage enterLegalAddress() {
+        fieldLegalAddress.sendKeys("LegalAddress");
+
+        return this;
+    }
+
+    public BackOfficePage enterZipCode() {
+        fieldLegalZipCode.sendKeys("12345");
+
+        return this;
+    }
+
+    public BackOfficePage enterLegalAddressCity() {
+        fieldLegalAddressCity.sendKeys("Legal Address City");
+
+        return this;
+    }
+
+    public BackOfficePage selectOfficeAddressCountry() {
+        selectValueFromDropdown(selectOfficeAddress,"AI");
+
+        return this;
+    }
+
+    public BackOfficePage enterCompanyName() {
+        enterCompanyName.clear();
+        enterCompanyName.sendKeys("CompName" + testContextBusiness.getPnoneBusiness());
+
+        return this;
+    }
+
+    public BackOfficePage clickAddCurrency() {
+        btnAddCurrency.click();
+        return this;
+    }
+
+
 }

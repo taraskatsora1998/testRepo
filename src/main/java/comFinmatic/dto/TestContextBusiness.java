@@ -10,7 +10,7 @@ public class TestContextBusiness {
     }
 
     private String getEmailBusiness(String phoneBusiness) {
-        return phoneBusiness + "@mailinator.com";
+        return "QaAutomationTests+1" + phoneBusiness + "@outlook.com";
     }
 
     private String getPhoneBusiness() {

@@ -22,11 +22,14 @@ public class HeaderPage extends AbstractComponents{
     @FindBy(xpath = "//button[@class='icon-button']")
     WebElement btnLogOut;
 
-    @FindBy(xpath = "//input[@placeholder='John Doe']")
+    @FindBy(xpath = "//div[@role='button']/div")
     WebElement btnDropDown;
 
     @FindBy(xpath = "//*[contains(text(),'TestCompany')]")
     WebElement btnTestComp;
+
+    @FindBy(xpath = "//input[@placeholder='John Doe']")
+    WebElement getText;
 
     By dropDownText = By.xpath("//*[contains(@value,'TestComp')]");
 
@@ -57,7 +60,7 @@ public class HeaderPage extends AbstractComponents{
     public String verifySuccessfullAccountSwitch(){
         waitForElementToBeVisible(dropDownText);
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        String textFromDropDown = (String) js.executeScript("return arguments[0].value", btnDropDown);
+        String textFromDropDown = (String) js.executeScript("return arguments[0].value", getText);
 
         return textFromDropDown;
     }

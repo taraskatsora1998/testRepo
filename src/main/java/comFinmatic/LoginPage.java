@@ -12,10 +12,12 @@ import java.util.List;
 
 public class LoginPage extends AbstractComponents {
 
-    public LoginPage(WebDriver driver, TestContextPersonal testContextPersonal, TestContextBusiness testContextBusiness){
+    public LoginPage(WebDriver driver, TestContextPersonal testContextPersonal, TestContextBusiness testContextBusiness) {
         super(driver, testContextPersonal, testContextBusiness);
-        PageFactory.initElements(driver,this);
+        PageFactory.initElements(driver, this);
     }
+
+    public String user;
 
     @FindBy(xpath = "//a[contains(.,'Register')]")
     WebElement btnRegister;
@@ -45,6 +47,7 @@ public class LoginPage extends AbstractComponents {
     WebElement allertMsgStatus;
 
     By securityCode = By.xpath("//input[@class='security-cell']");
+    By waitAllertMsg = By.xpath("//p[@class='alert-text']");
 
     public String allertMsgAdministrate = "Your account has been temporarily blocked due to an internal account review. Please contact the support team.";
 
@@ -68,8 +71,21 @@ public class LoginPage extends AbstractComponents {
         return this;
     }
 
+    public LoginPage enterPhoneNumberSelectedAccount() {
+        user = Utils.getUser();
+        fieldPhoneNumber.sendKeys(user);
+
+        return this;
+    }
+
     public LoginPage enterPassword() {
         fieldPassword.sendKeys(testContextPersonal.getPassword());
+
+        return this;
+    }
+
+    public LoginPage enterPasswordSelectedAccount() {
+        fieldPassword.sendKeys("Aa123b123-1");
 
         return this;
     }
@@ -89,7 +105,7 @@ public class LoginPage extends AbstractComponents {
         return this;
     }
 
-    public LoginPage clickForgotPasswordBtn(){
+    public LoginPage clickForgotPasswordBtn() {
         btnForgotPassword.click();
 
         return this;
@@ -101,13 +117,14 @@ public class LoginPage extends AbstractComponents {
         return this;
     }
 
-    public LoginPage clickCountryBtn(){
+    public LoginPage clickCountryBtn() {
         btnCountry.click();
 
         return this;
     }
 
     public String getAllertMsg() {
+        waitForElementToBeVisible(waitAllertMsg);
         return allertMsgStatus.getText();
     }
 

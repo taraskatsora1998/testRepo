@@ -10,7 +10,7 @@ public class RegisterTest extends SetupClassTest{
     public static RegisterPage registerPage;
     public static DashboardPage dashboardPage;
 
-    @Test
+    @Test(groups= {"group1"},priority = 1)
     public void testRegistrationPersonalAccount(){
         TestContextPersonal testContextPersonal = new TestContextPersonal();
         TestContextBusiness testContextBusiness = new TestContextBusiness();
@@ -38,7 +38,7 @@ public class RegisterTest extends SetupClassTest{
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(groups= {"group1"},priority = 2)
     public void testRegistrationBussinessAccount(){
         TestContextPersonal testContextPersonal = new TestContextPersonal();
         TestContextBusiness testContextBusiness = new TestContextBusiness();
@@ -64,7 +64,7 @@ public class RegisterTest extends SetupClassTest{
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(groups= {"group1"},priority = 3)
     public void testRegistrationWithoutAccountBussinessAccount(){
         TestContextPersonal testContextPersonal = new TestContextPersonal();
         TestContextBusiness testContextBusiness = new TestContextBusiness();
@@ -101,7 +101,7 @@ public class RegisterTest extends SetupClassTest{
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(groups= {"group1"},priority = 4)
     public void testRegistrationWithoutAccountPersonalAccount(){
         TestContextPersonal testContextPersonal = new TestContextPersonal();
         TestContextBusiness testContextBusiness = new TestContextBusiness();

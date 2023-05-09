@@ -13,7 +13,7 @@ public class SettingsTest extends SetupClassTest{
     public static SettingsPage settingsPage;
     public static HeaderPage headerPage;
 
-    @Test
+    @Test(groups= {"group1"},priority = 1)
     public void testResetPasswordPersonalAccountInSettings(){
         TestContextPersonal testContextPersonal = new TestContextPersonal();
         TestContextBusiness testContextBusiness = new TestContextBusiness();
@@ -61,7 +61,7 @@ public class SettingsTest extends SetupClassTest{
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(groups= {"group1"},priority = 2)
     public void testResetPasswordBusinessAccountInSettings(){
         TestContextPersonal testContextPersonal = new TestContextPersonal();
         TestContextBusiness testContextBusiness = new TestContextBusiness();

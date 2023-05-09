@@ -14,22 +14,24 @@
     </properties>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.4.0</version>
+            <version>7.6.1</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.8.1</version>
+            <version>4.9.0</version>
         </dependency>
 
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>5.3.1</version>
+            <version>5.3.2</version>
         </dependency>
 
         <dependency>
@@ -43,44 +45,40 @@
             <artifactId>selenium-http-jdk-client</artifactId>
             <version>4.5.0</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-firefox-driver -->
+
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-firefox-driver</artifactId>
             <version>4.8.1</version>
         </dependency>
 
-
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.0.0-M7</version>
+        </dependency>
 
     </dependencies>
 
-    <profiles>
-        <profile>
-            <id>Regression</id>
-            <build>
-                <pluginManagement>
-                    <plugins>
-                        <plugin>
-                            <groupId>org.apache.maven.plugins</groupId>
-                            <artifactId>maven-surefire-plugin</artifactId>
-                            <version>3.0.0-M7</version>
-                            <configuration>
-                                <testFailureIgnore>false</testFailureIgnore>
-                                <suiteXmlFiles>
-                                    <suiteXmlFile>src/test/java/resources/RunAllTests.xml</suiteXmlFile>
-                                </suiteXmlFiles>
-                                <skipTests>false</skipTests>
-                                <!--<skipFailedTests>true</skipFailedTests>-->
-                                <reportsDirectory>${project.build.directory}/surefire-reports</reportsDirectory>
-                                <forkCount>0</forkCount>
-                                <debugForkedProcess>true</debugForkedProcess>
-                                <argLine>-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000</argLine>
-                            </configuration>
-                        </plugin>
-                    </plugins>
-                </pluginManagement>
-            </build>
-        </profile>
-    </profiles>
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>3.0.0-M7</version>
+                    <configuration>
+                        <skipTests>false</skipTests>
+                        <suiteXmlFiles>
+                            <suiteXmlFile>
+                                src/test/java/resources/RunAllTests.xml
+                            </suiteXmlFile>
+                        </suiteXmlFiles>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 
 </project>

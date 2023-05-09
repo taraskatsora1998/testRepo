@@ -1,7 +1,6 @@
 comFinmatic/LoginTest.class
 comFinmatic/SettingsTest.class
 comFinmatic/BackOfficeTest.class
-comFinmatic/BaseTest.class
 comFinmatic/ForgotPasswordTest.class
 comFinmatic/DashboardTest.class
 comFinmatic/RegisterTest.class

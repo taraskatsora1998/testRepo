@@ -1,5 +1,6 @@
 comFinmatic/dto/TestContextPersonal.class
 comFinmatic/HeaderPage.class
+comFinmatic/PasswordRecoveryPage.class
 comFinmatic/dto/TestContextBusiness.class
 comFinmatic/LoginPage.class
 comFinmatic/RegisterPage.class

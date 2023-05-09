@@ -36,7 +36,7 @@ public class AbstractComponents {
     }
 
     public void waitForElementToBeClickable(By findBy){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
         wait.until(ExpectedConditions.elementToBeClickable(findBy));
     }
 
@@ -59,39 +59,8 @@ public class AbstractComponents {
     }
 
     public void getRequiredEnvLinkWebSite() {
-        String environment = System.getProperty("environment");
-
-        if (environment.equalsIgnoreCase("dev_chrome")) {
-            url = "https://dev.finmatic.net/login";
-            browser = "chrome";
-        } else if (environment.equalsIgnoreCase("dev_firefox")) {
-            url = "https://dev.finmatic.net/login";
-            browser = "firefox";
-        } else if (environment.equalsIgnoreCase("dev_safari")) {
-            url = "https://dev.finmatic.net/login";
-            browser = "safari";
-        } else if (environment.equalsIgnoreCase("bmp_chrome")) {
-            url = "https://bmp.finmatic.net/login";
-            browser = "chrome";
-        } else if (environment.equalsIgnoreCase("bmp_firefox")) {
-            url = "https://bmp.finmatic.net/login";
-            browser = "firefox";
-        }  else if (environment.equalsIgnoreCase("bmp_safari")) {
-            url = "https://bmp.finmatic.net/login";
-            browser = "safari";
-        }  else if (environment.equalsIgnoreCase("acceptance_chrome")) {
-            url = "https://acceptance-new.finmatic.net/login";
-            browser = "chrome";
-        } else if (environment.equalsIgnoreCase("acceptance_firefox")) {
-            url = "https://acceptance-new.finmatic.net/login";
-            browser = "firefox";
-        } else if (environment.equalsIgnoreCase("acceptance_safari")) {
-            url = "https://acceptance-new.finmatic.net/login";
-            browser = "safari";
-        } else {
-            throw new IllegalArgumentException("Invalid environment: " + environment);
-        }
-
+        url = Utils.getFrontofficeUrl();
+        browser = Utils.getBrowser();
         driver.get(url);
     }
 
@@ -100,42 +69,24 @@ public class AbstractComponents {
         ArrayList<String> all = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(all.get(1));
 
-        String environment = System.getProperty("environment");
-        if (environment.equalsIgnoreCase("dev_chrome")) {
-            url = "https://dev-admin.finmatic.net/login";
-            browser = "chrome";
-        } else if (environment.equalsIgnoreCase("dev_firefox")) {
-            url = "https://dev-admin.finmatic.net/login";
-            browser = "firefox";
-        } else if (environment.equalsIgnoreCase("dev_safari")) {
-            url = "https://dev-admin.finmatic.net/login";
-            browser = "safari";
-        } else if (environment.equalsIgnoreCase("bmp_chrome")) {
-            url = "https://bmp-admin.finmatic.net/login";
-            browser = "chrome";
-        } else if (environment.equalsIgnoreCase("bmp_firefox")) {
-            url = "https://bmp-admin.finmatic.net/login";
-            browser = "firefox";
-        } else if (environment.equalsIgnoreCase("bmp_safari")) {
-            url = "https://bmp-admin.finmatic.net/login";
-            browser = "safari";
-        } else if (environment.equalsIgnoreCase("acceptance_chrome")) {
-            url = "https://acceptance.admin.finmatic.net/login";
-            browser = "chrome";
-        } else if (environment.equalsIgnoreCase("acceptance_firefox")) {
-            url = "https://acceptance.admin.finmatic.net/login";
-            browser = "firefox";
-        } else if (environment.equalsIgnoreCase("acceptance_safari")) {
-            url = "https://acceptance.admin.finmatic.net/login";
-            browser = "safari";
-        } else {
-            throw new IllegalArgumentException("Invalid environment: " + environment);
-        }
+        url = Utils.getBackofficeUrl();
+        browser = Utils.getBrowser();
+
+        driver.get(url);
+    }
+
+    public void getRequiredEnvLinkOP() {
+        ((JavascriptExecutor)driver).executeScript("window.open()");
+        ArrayList<String> all = new ArrayList<String>(driver.getWindowHandles());
+        driver.switchTo().window(all.get(2));
+        url = Utils.getOpenPaydUrl();
+        browser = Utils.getBrowser();
 
         driver.get(url);
     }
 
     public void implicitWait(){
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(550));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(200));
     }
+
 }

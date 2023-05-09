@@ -14,7 +14,7 @@ public class TestContextPersonal {
     }
 
     private String getEmail(String phone) {
-        return phone + "@mailinator.com";
+        return "QaAutomationTests+1" + phone + "@outlook.com";
     }
 
     private String getPhone() {

@@ -1,78 +1,68 @@
 package comFinmatic;
 
+import comFinmatic.dto.TestContextBusiness;
+import comFinmatic.dto.TestContextPersonal;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.util.Properties;
-
 public class SetupClassTest {
-    protected WebDriver driver;
-    private String url;
-    private String browser;
+    public WebDriver driver;
+    public OutlookPage outlookPage;
 
     @BeforeMethod
     public void setUp() {
-        String environment = System.getProperty("environment");
+        String url = Utils.getFrontofficeUrl();
+        String browser = Utils.getBrowser();
+        DesiredCapabilities capabilities = new DesiredCapabilities();
 
-        if (environment.equalsIgnoreCase("dev_chrome")) {
-            url = "https://dev.finmatic.net/login";
-            browser = "chrome";
-        } else if (environment.equalsIgnoreCase("dev_firefox")) {
-            url = "https://dev.finmatic.net/login";
-            browser = "firefox";
-        } else if (environment.equalsIgnoreCase("dev_safari")) {
-            url = "https://dev.finmatic.net/login";
-            browser = "safari";
-        } else if (environment.equalsIgnoreCase("bmp_chrome")) {
-            url = "https://bmp.finmatic.net/login";
-            browser = "chrome";
-        } else if (environment.equalsIgnoreCase("bmp_firefox")) {
-            url = "https://bmp.finmatic.net/login";
-            browser = "firefox";
-        }  else if (environment.equalsIgnoreCase("bmp_safari")) {
-            url = "https://bmp.finmatic.net/login";
-            browser = "safari";
-        }  else if (environment.equalsIgnoreCase("acceptance_chrome")) {
-            url = "https://acceptance-new.finmatic.net/login";
-            browser = "chrome";
-        } else if (environment.equalsIgnoreCase("acceptance_firefox")) {
-            url = "https://acceptance-new.finmatic.net/login";
-            browser = "firefox";
-        } else if (environment.equalsIgnoreCase("acceptance_safari")) {
-            url = "https://acceptance-new.finmatic.net/login";
-            browser = "safari";
-        } else {
-            throw new IllegalArgumentException("Invalid environment: " + environment);
-        }
-
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-
-        if(browser.equalsIgnoreCase("chrome")) {
+        if (browser.equalsIgnoreCase("chrome")) {
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--remote-allow-origins=*");
+            options.addArguments("--window-size=1920,1080");
+            //options.addArguments("--headless");
+            options.addArguments("--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36");
+            DesiredCapabilities caps = new DesiredCapabilities();
+            caps.setCapability(ChromeOptions.CAPABILITY, options);
+            caps.setCapability("acceptInsecureCerts", caps);
             driver = new ChromeDriver(options);
-        } else if(browser.equalsIgnoreCase("firefox")){
-            driver = new FirefoxDriver();
-        } else if(browser.equalsIgnoreCase("safari")){
-            driver = new SafariDriver();
+        } else if (browser.equalsIgnoreCase("firefox")) {
+            FirefoxOptions options = new FirefoxOptions();
+            capabilities.setBrowserName("firefox");
+            options.addArguments("--window-size=1920,1080");
+            options.addArguments("--disable-gpu");
+            options.addArguments("--disable-extensions");
+            options.addArguments("--proxy-server='direct://'");
+            options.addArguments("--proxy-bypass-list=*");
+            options.addArguments("--start-maximized");
+            options.addArguments("--headless");
+            driver = new FirefoxDriver(options);
         } else {
             throw new IllegalArgumentException("Invalid browser: " + browser);
         }
-
         driver.manage().window().maximize();
         driver.get(url);
     }
 
-    @AfterMethod(alwaysRun = true)
+    @AfterMethod(onlyForGroups = {"group2"})
+    public void deleteMails() {
+        TestContextPersonal testContextPersonal = new TestContextPersonal();
+        TestContextBusiness testContextBusiness = new TestContextBusiness();
+        outlookPage = new OutlookPage(driver, testContextPersonal, testContextBusiness);
+        outlookPage.quitDriverEmail();
+    }
+
+    @AfterMethod(onlyForGroups = {"group2", "group1"}, alwaysRun = true)
     public void quitDriver() {
         if (driver != null) {
             driver.quit();
         }
     }
+
 }

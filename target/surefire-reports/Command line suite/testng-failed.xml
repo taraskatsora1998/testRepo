@@ -3,23 +3,34 @@
 <suite name="Failed suite [Command line suite]" verbose="0">
   <test thread-count="5" name="Command line test(failed)" verbose="0">
     <classes>
+      <class name="comFinmatic.SettingsTest">
+        <methods>
+          <include name="quitDriver"/>
+          <include name="testResetPasswordBusinessAccountInSettings"/>
+          <include name="testResetPasswordPersonalAccountInSettings"/>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- comFinmatic.SettingsTest -->
+      <class name="comFinmatic.RegisterTest">
+        <methods>
+          <include name="quitDriver"/>
+          <include name="testRegistrationBussinessAccount"/>
+          <include name="testRegistrationWithoutAccountBussinessAccount"/>
+          <include name="testRegistrationWithoutAccountPersonalAccount"/>
+          <include name="setUp"/>
+          <include name="testRegistrationPersonalAccount"/>
+        </methods>
+      </class> <!-- comFinmatic.RegisterTest -->
       <class name="comFinmatic.ForgotPasswordTest">
         <methods>
           <include name="quitDriver"/>
-          <include name="testForgotPasswordBusinessAccount"/>
+          <include name="testForgotPasswordWithEmailPhonePersonalAccount"/>
+          <include name="testForgotPasswordWithEMailPhoneBusinessAccount"/>
           <include name="testForgotPasswordPersonalAccount"/>
           <include name="setUp"/>
-          <include name="testForgotPasswordWithoutAccount"/>
+          <include name="testForgotPasswordWithOutEmail"/>
         </methods>
       </class> <!-- comFinmatic.ForgotPasswordTest -->
-      <class name="comFinmatic.LoginTest">
-        <methods>
-          <include name="testCheckUserCanLoginBussinessAccount"/>
-          <include name="quitDriver"/>
-          <include name="testCheckUserCanLoginPersonalAccount"/>
-          <include name="setUp"/>
-        </methods>
-      </class> <!-- comFinmatic.LoginTest -->
       <class name="comFinmatic.DashboardTest">
         <methods>
           <include name="testCheckBusinessAccountCanSeeVerificationBtn"/>
@@ -34,18 +45,17 @@
           <include name="testCheckBusinessAccountReceivesEmailSuccessfulActivation"/>
         </methods>
       </class> <!-- comFinmatic.DashboardTest -->
-      <class name="comFinmatic.SettingsTest">
+      <class name="comFinmatic.LoginTest">
         <methods>
+          <include name="testCheckUserCanLoginBussinessAccount"/>
           <include name="quitDriver"/>
-          <include name="testResetPasswordBusinessAccountInSettings"/>
-          <include name="testResetPasswordPersonalAccountInSettings"/>
+          <include name="testCheckUserCanLoginPersonalAccount"/>
           <include name="setUp"/>
         </methods>
-      </class> <!-- comFinmatic.SettingsTest -->
+      </class> <!-- comFinmatic.LoginTest -->
       <class name="comFinmatic.BackOfficeTest">
         <methods>
           <include name="quitDriver"/>
-          <include name="testCheckKycStatusHiddenForNewUserPersonal"/>
           <include name="testCheckKycStatusNewForNewUserPersonal"/>
           <include name="testCheckKycStatusDeclinedForNewUserPersonal"/>
           <include name="testCheckOperatorCanChangeUserStatusToBlockedPersonalAccount"/>
@@ -56,23 +66,15 @@
           <include name="testCheckKycStatusUnderReviewForNewUserBusiness"/>
           <include name="testCheckKycStatusVerifiedForNewUserPersonal"/>
           <include name="testCheckOperatorCanChangeUserStatusToActivePersonalAccount"/>
+          <include name="testCheckUserCanResetPswrdUsingProvidedLinkBusiness"/>
+          <include name="testUserReceiveResetPswrdEmailPersonal"/>
           <include name="testCheckKycStatusDeclinedForNewUserBusiness"/>
           <include name="testCheckOperatorCanChangeUserStatusToBlockedBusinessAccount"/>
-          <include name="testCheckKycStatusActiveForNewUserPersonal"/>
+          <include name="testUserReceiveResetPswrdEmailBusiness"/>
           <include name="testCheckKycStatusNewForNewUserBusiness"/>
           <include name="testCheckOperatorCanChangeUserStatusToAdministratePersonalAccount"/>
         </methods>
       </class> <!-- comFinmatic.BackOfficeTest -->
-      <class name="comFinmatic.RegisterTest">
-        <methods>
-          <include name="quitDriver"/>
-          <include name="testRegistrationBussinessAccount"/>
-          <include name="testRegistrationWithoutAccountBussinessAccount"/>
-          <include name="testRegistrationWithoutAccountPersonalAccount"/>
-          <include name="setUp"/>
-          <include name="testRegistrationPersonalAccount"/>
-        </methods>
-      </class> <!-- comFinmatic.RegisterTest -->
     </classes>
   </test> <!-- Command line test(failed) -->
 </suite> <!-- Failed suite [Command line suite] -->

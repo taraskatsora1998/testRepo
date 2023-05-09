@@ -10,7 +10,7 @@ public class LoginTest extends SetupClassTest{
     public static DashboardPage dashboardPage;
     public static RegisterPage registerPage;
 
-    @Test
+    @Test(groups= {"group1"},priority = 1)
     public void testCheckUserCanLoginPersonalAccount(){
         TestContextPersonal testContextPersonal = new TestContextPersonal();
         TestContextBusiness testContextBusiness = new TestContextBusiness();
@@ -47,7 +47,7 @@ public class LoginTest extends SetupClassTest{
         softAssert.assertAll();
     }
 
-    @Test
+    @Test(groups= {"group1"},priority = 2)
     public void testCheckUserCanLoginBussinessAccount(){
         TestContextPersonal testContextPersonal = new TestContextPersonal();
         TestContextBusiness testContextBusiness = new TestContextBusiness();

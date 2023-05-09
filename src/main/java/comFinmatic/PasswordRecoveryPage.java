@@ -41,7 +41,7 @@ public class PasswordRecoveryPage extends AbstractComponents{
 
     public PasswordRecoveryPage enterSecurityCode() {
         ArrayList<String> all = new ArrayList<String>(driver.getWindowHandles());
-        driver.switchTo().window(all.get(2));
+        driver.switchTo().window(all.get(3));
         waitForElementToBeVisible(securityCode);
         for (WebElement webElement : fieldSecurityCode) {
             webElement.sendKeys("1");
